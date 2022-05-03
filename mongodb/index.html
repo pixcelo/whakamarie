@@ -1,0 +1,610 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13">
+    
+    
+      
+        <title>MongDB - whakamarie</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e411adfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mongdb" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="whakamarie" class="md-header__button md-logo" aria-label="whakamarie" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            whakamarie
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MongDB
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="whakamarie" class="md-nav__button md-logo" aria-label="whakamarie" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    whakamarie
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../correlation/" class="md-nav__link">
+        Pythonで相関係数を求める
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          MongDB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        MongDB
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    実行環境
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    インストール
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    バージョン確認
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    起動
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    停止
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    サービスの状態を確認
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mongodb_python/" class="md-nav__link">
+        Pythonでmongodbを使用する
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../networkx/" class="md-nav__link">
+        networkx
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    実行環境
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    インストール
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    バージョン確認
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    起動
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    停止
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    サービスの状態を確認
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="mongdb">MongDB</h1>
+<p>MongDBをmacにインストールしてから実行するまでのまとめ<br/>
+MongoDBの公式にMongoDB大学という学習用のサイトも参考にできる<br/>
+https://university.mongodb.com</p>
+<h2 id="_1">実行環境</h2>
+<ul>
+<li>macOS Big Sur</li>
+<li>バージョン11.4</li>
+</ul>
+<h2 id="_2">インストール</h2>
+<pre><code>brew tap mongodb/brew
+brew install mongodb-community
+</code></pre>
+<h2 id="_3">バージョン確認</h2>
+<pre><code>mongod --version
+
+db version v5.0.7
+Build Info: {
+    "version": "5.0.7",
+    "gitVersion": "b977129dc70eed766cbee7e412d901ee213acbda",
+    "modules": [],
+    "allocator": "system",
+    "environment": {
+        "distarch": "x86_64",
+        "target_arch": "x86_64"
+    }
+}
+</code></pre>
+<h2 id="_4">起動</h2>
+<pre><code>brew services start mongodb-community
+
+==&gt; Successfully started `mongodb-community` (label: homebrew.mxcl.mongodb-community)
+</code></pre>
+<h2 id="_5">停止</h2>
+<pre><code>brew services stop mongodb-community
+
+Stopping `mongodb-community`... (might take a while)
+</code></pre>
+<h2 id="_6">サービスの状態を確認</h2>
+<pre><code>brew services list
+
+Name              Status     User  File
+mongodb-community started    xxxxx ~/Library/LaunchAgents/homebrew.mxcl.mongodb-community.plist
+</code></pre>
+<p><code>Status</code>が<code>none</code>から<code>started</code>に変わっていれば、サービスが起動している</p>
+<p>&nbsp;</p>
+<h1 id="_7">データベースの操作</h1>
+<h2 id="_8">接続</h2>
+<pre><code>&gt; mongo
+</code></pre>
+<p>mongoシェルに接続される</p>
+<h2 id="_9">データベースの作成</h2>
+<pre><code>&gt; use test_example_db
+
+switched to db test_example_db
+</code></pre>
+<h2 id="_10">接続中のデータベース名の確認</h2>
+<pre><code>&gt; db
+
+est_example_db
+</code></pre>
+<h2 id="_11">接続中のデータベースの状態を確認</h2>
+<pre><code>&gt; db.stats()
+{
+    "db" : "test_example_db",
+    "collections" : 0,
+    "views" : 0,
+    "objects" : 0,
+    "avgObjSize" : 0,
+    "dataSize" : 0,
+    "storageSize" : 0,
+    "totalSize" : 0,
+    "indexes" : 0,
+    "indexSize" : 0,
+    "scaleFactor" : 1,
+    "fileSize" : 0,
+    "fsUsedSize" : 0,
+    "fsTotalSize" : 0,
+    "ok" : 1
+}
+</code></pre>
+<p><code>collections</code>はRDBMSでいうテーブルに相当する<br/>
+コレクションの中にドキュメント（RDBMSでいうレコード）を追加する</p>
+<h2 id="_12">ドキュメントの追加</h2>
+<pre><code>&gt; db.stock.insert({date:202204280700, bid:13190.6, ask:13188.2});
+
+WriteResult({ "nInserted" : 1 })
+</code></pre>
+<p>INSERT文は、<code>db.コレクション名.コマンド名(オプション)</code><br/>
+<code>stock</code>コレクションに1件のドキュメントが追加される</p>
+<p>## コレクションの参照
+    &gt; db.stock.find()
+    { "_id" : ObjectId("626c53dd63c99ebcb415effa"), "date" : 202204280700, "bid" : 13190.6, "ask" : 13188.2 }
+SELECT文は、<code>db.コレクション名.find()</code><br/>
+<code>_id</code>、<code>date</code>、<code>bid</code>、<code>ask</code>等のカラムをフィールドと呼ぶ<br/>
+<code>_id</code> (主キー)は自動付与</p>
+<h2 id="_13">クエリセレクタ</h2>
+<pre><code>&gt; db.stock.find({date:202204280700})
+</code></pre>
+<p><code>find(条件)</code>で、コレクションの参照に条件を指定できる<br/>
+複数条件は、<code>find(条件1, 条件2)</code>と指定する</p>
+<h2 id="_14">ドキュメントの更新</h2>
+<pre><code>&gt; db.stock.update({date:202204280700}, {$set:{bid:12000.1}})
+
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+</code></pre>
+<p><code>db.コレクション名.update({フィールド名:条件}, {$set{フィールド名:更新する値}})</code></p>
+<h2 id="_15">ドキュメントの削除</h2>
+<pre><code>&gt; db.stock.remove({date:202204280700})
+
+WriteResult({ "nRemoved" : 1 })
+</code></pre>
+<p>DELETE文は、<code>db.コレクション名.remove(条件)</code><br/></p>
+<h1 id="_16">データのインポート</h1>
+<pre><code>mongoimport -db fd –collection test_example_db –type csv –file USTEC.csv –headerline
+</code></pre>
+<p>json、csv、tsv等のファイル形式をインポートできる</p>
+<h3 id="_17">指定するオプション</h3>
+<ul>
+<li>–db DB名</li>
+<li>–collection コレクション名</li>
+<li>–type 入力ファイル形式</li>
+<li>–file 入力ファイル名</li>
+<li>–headerline ヘッダ行の無視</li>
+</ul>
+<h1 id="gui">GUIツール</h1>
+<ul>
+<li><a href="https://www.mongodb.com/products/compass">MongoDB Compass</a></li>
+<li><a href="https://robomongo.org/">Robo 3T</a>
+<br/></li>
+</ul>
+<p>色々あるので自分好みのものを探してみる</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../correlation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Pythonで相関係数を求める" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Pythonで相関係数を求める
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../mongodb_python/" class="md-footer__link md-footer__link--next" aria-label="Next: Pythonでmongodbを使用する" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Pythonでmongodbを使用する
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ed9748b7.min.js"></script>
+      
+    
+  </body>
+</html>
